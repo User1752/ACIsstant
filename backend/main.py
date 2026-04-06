@@ -224,7 +224,7 @@ async def chat_stream(request: ChatRequest):
     else:
         inventory_msg = f"You have {len(all_files)} files available in your knowledge base: " + ", ".join(all_files) if all_files else "No files are currently in your knowledge base."
 
-    context, sources = rag_manager.query(user_msg, k=2)
+    context, sources = rag_manager.query(user_msg, k=4)
 
     raw_system = llm_manager.get_system_prompt(request.language)
     inventory_directive = f"[SYSTEM DIRECTIVE] {inventory_msg}\nYOU MUST USE THESE FILES. YOU HAVE ACCESS TO THEM RIGHT NOW."
